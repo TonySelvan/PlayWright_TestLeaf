@@ -2,7 +2,7 @@
 
 import test from '@playwright/test'
 
-test('Assingment1', async({page}) =>{
+test('Create Lead', async({page}) =>{
 
     await page.goto("https://login.salesforce.com");
     await page.locator("#username").clear();

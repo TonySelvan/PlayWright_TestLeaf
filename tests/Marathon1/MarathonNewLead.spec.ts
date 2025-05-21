@@ -17,7 +17,7 @@ test('New Lead', async ({ page }) => {
     await page.locator("//div[@title='New']").click();
 
 
-    function generateRandomString(length) {
+    function generateRandomString(length: number) {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let result = '';
         for (let i = 0; i < length; i++) {

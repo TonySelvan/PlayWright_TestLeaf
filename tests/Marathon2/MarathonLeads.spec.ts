@@ -18,7 +18,7 @@ function generateRandomString(length: number) {
             const randomIndex = Math.floor(Math.random() * characters.length);
             result += characters.charAt(randomIndex);
         }
-        return result;
+        return result; 
     }
 
 test.describe.configure({ mode: 'serial' });

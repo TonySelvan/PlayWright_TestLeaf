@@ -87,6 +87,7 @@ test.describe("E2E Automation with both API & UI", async () => {
             if (title === DashName) {
                 DashId = rbody.recentItems[i].Id;
                 console.log(DashId);
+                break;
                 // var DashId = id;
                 // pm.collectionVariables.set("DashId", id);
             }

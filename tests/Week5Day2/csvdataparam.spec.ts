@@ -2,7 +2,6 @@ import test from "@playwright/test";
 import { parse } from "csv-parse/sync";
 import fs from "fs";
 
-
 // Read and parse the CSV file at runtime
 const logindata = parse(fs.readFileSync(require.resolve("../../Sample.csv")), {
     columns: true,

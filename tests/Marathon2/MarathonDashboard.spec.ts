@@ -19,6 +19,7 @@ function generateRandomString(length: number) {
     return result;
 }
 
+
 test.describe.configure({ mode: 'serial' });
 test.describe("E2E Automation with both API & UI", async () => {
     test("Created New Dashboard", async ({ page }) => {

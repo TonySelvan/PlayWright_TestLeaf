@@ -5,7 +5,7 @@ import creds from "../../Sample.json"
 
 
 // const logindata = parse(fs.readFileSync("Sample.csv"),{columns:true})
-for(let data of creds[1]){
+for(let data of creds){
 test(`JSON Data Param ${data.username}`, async({page})=>{
     await page.goto("https://login.salesforce.com");
     await page.locator("#username").clear();
@@ -19,7 +19,7 @@ test(`JSON Data Param ${data.username}`, async({page})=>{
 
 const jsonparse = JSON.parse(fs.readFileSync("Sample.json",'utf-8'));
 
-for(let datas of jsonparse[0]){
+for(let datas of jsonparse){
 test(`JSON Parse Data Param ${datas.username}`, async({page})=>{
     await page.goto("https://login.salesforce.com");
     await page.locator("#username").clear();

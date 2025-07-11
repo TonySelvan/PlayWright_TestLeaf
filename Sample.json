@@ -1,5 +1,5 @@
 
-[[
+[
     {
         "username":"first@testleaf.com",
         "password":"Sales@123"
@@ -7,10 +7,7 @@
     {
         "username":"second@testleaf.com",
         "password":"Sales@123"
-    }
-
-],
-[
+    },
     {
         "username":"third@testleaf.com",
         "password":"Sales@123"
@@ -20,5 +17,4 @@
         "password":"Sales@123"
     }
 
-]
 ]

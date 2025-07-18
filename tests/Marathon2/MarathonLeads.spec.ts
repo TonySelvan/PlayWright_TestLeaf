@@ -92,6 +92,8 @@ test.describe("E2E Automation with both API & UI", async () => {
 
 
     test("Search Created Lead", async ({ page }) => {
+        // Ensure that 'lastname' is available before proceeding
+        expect(lastname, 'Lastname should be defined from previous API call').toBeTruthy();
 
         await page.goto("https://login.salesforce.com");
         await page.locator("#username").clear();
@@ -99,23 +101,33 @@ test.describe("E2E Automation with both API & UI", async () => {
         await page.locator("#password").fill("testleaf@90");
         await page.locator("input[type='submit']").click();
         await page.waitForTimeout(5000);
+
+        // Wait for Leads tab to be visible/clickable
+        await page.locator("(//span[text()='Leads'])[1]").waitFor({ state: 'visible', timeout: 15000 });
         await page.locator("(//span[text()='Leads'])[1]").click();
+
+        // Wait for search input to be ready
+        await page.locator("//input[@name='Lead-search-input']").waitFor({ state: 'visible', timeout: 10000 });
         await page.locator("//input[@name='Lead-search-input']").click();
         await page.locator("//input[@name='Lead-search-input']").fill(lastname);
         await page.keyboard.press("Enter");
         await page.waitForTimeout(5000);
+
         const leadLink = page.locator(`(//a[contains(text(),'${lastname}')])[1]`);
         await leadLink.waitFor({ state: 'visible', timeout: 10000 });
         await leadLink.click();
         await page.waitForTimeout(5000);
+
+        // Open actions menu and delete
         await page.locator("//li[@role='presentation']//*[local-name()='svg']//*[local-name()='g']").click();
         await page.locator("//span[text()='Delete']").click();
         await page.locator("//span[text()='Delete' and @class=' label bBody']").click();
+
+        // Search again to confirm deletion
         await page.locator("//input[@name='Lead-search-input']").click();
         await page.locator("//input[@name='Lead-search-input']").clear();
         await page.locator("//input[@name='Lead-search-input']").fill(lastname);
         await page.keyboard.press("Enter");
         await expect(page.locator("//span[text()='No items to display.']")).toBeVisible();
-
     })
 })

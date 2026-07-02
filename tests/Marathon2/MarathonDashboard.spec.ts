@@ -27,7 +27,7 @@ test.describe("E2E Automation with both API & UI", async () => {
         await page.goto("https://login.salesforce.com");
         await page.locator("#username").clear();
         await page.locator("#username").fill("ktselvan4029950@agentforce.com");
-        await page.locator("#password").fill("testleaf@90");
+        await page.locator("#password").fill("Sowmika@2026");
         await page.locator("input[type='submit']").click();
         await page.waitForTimeout(5000);
         await page.locator("(//span[text()='Dashboards'])[1]").click();

@@ -37,7 +37,7 @@ test.describe("E2E Automation with both API & UI", async () => {
                     "client_id": "3MVG9dAEux2v1sLuMoraU3Ce3wiPlju2x0cYssvxdEoDo52S8C6FemgFg3KgGEOCSSkLcsUEovqKTt0Koed2Y",
                     "client_secret": "B097D17B1E695AA68108C52A3080077295544319CFD580C7722C93F5F92C0A33",
                     "username": "ktselvan4029950@agentforce.com",
-                    "password": "testleaf@90"
+                    "password": "Sowmika@2026"
 
                 }
 

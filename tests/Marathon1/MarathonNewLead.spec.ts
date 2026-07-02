@@ -5,8 +5,8 @@ test('New Lead', async ({ page }) => {
 
     await page.goto("https://login.salesforce.com");
     await page.locator("#username").clear();
-    await page.locator("#username").fill("vidyar@testleaf.com");
-    await page.locator("#password").fill("Sales@123");
+       await page.locator("#username").fill("ktselvan4029950@agentforce.com");
+    await page.locator("#password").fill("Sowmika@2026");
     await page.locator("input[type='submit']").click();
     await page.waitForTimeout(10000);
     await page.locator("div[class='slds-r6']").click();
@@ -95,8 +95,8 @@ test.only('Printing Column Values', async ({ page }) => {
 
     await page.goto("https://login.salesforce.com");
     await page.locator("#username").clear();
-    await page.locator("#username").fill("vidyar@testleaf.com");
-    await page.locator("#password").fill("Sales@123");
+    await page.locator("#username").fill("ktselvan4029950@agentforce.com");
+    await page.locator("#password").fill("Sowmika@2026");
     await page.locator("input[type='submit']").click();
     await page.waitForTimeout(5000);
     await page.locator("div[class='slds-r6']").click();

@@ -62,3 +62,12 @@ jobs:
         subject: "Playwright Automation Suite Run - ${{ job.status }}"
         to: ktselvan4029@gmail.com
         from: QA Automation Server <${{ secrets.MAIL_USERNAME }}>
+
+        # Markdown body parsed directly into an HTML layout
+        convert_markdown: true
+        html_body: |
+          ### Playwright Execution Summary
+          * **Repository:** ${{ github.repository }}
+          * **Triggered By:** `${{ github.actor }}`
+          * **Workflow Status:** **${{ job.status }}**
+          attachments: playwright-report/index.html

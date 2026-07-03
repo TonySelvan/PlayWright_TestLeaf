@@ -2,14 +2,21 @@
   "name": "pw-classroom",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:all": "npx playwright test",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @regression",
+    "test:swag": "npx playwright test SwagLabs.spec.ts",
+    "test:api": "npx playwright test APIDemo.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.2"
+    "@types/node": "^22.15.2",
+    "allure-playwright": "^3.10.2"
   },
   "dependencies": {
     "@faker-js/faker": "^9.8.0",

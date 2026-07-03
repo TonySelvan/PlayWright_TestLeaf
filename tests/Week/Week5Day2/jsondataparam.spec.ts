@@ -1,7 +1,7 @@
 import test from "@playwright/test";
 import { parse } from "csv-parse/sync";
 import fs from "fs";
-import creds from "../../../Sample.json"
+import cresd from "../../../Sample.json"
 
 
 // const logindata = parse(fs.readFileSync("Sample.csv"),{columns:true})

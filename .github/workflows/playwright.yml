@@ -1,25 +1,43 @@
-name: Playwright Tests
+name: Playwright Tests Regression Suite
 on:
+  # Triggers the pipeline automatically when code is pushed to the main branch
   push:
     branches: [ main, master ]
+  # Triggers the pipeline when someone opens a Pull Request against the main branch
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     timeout-minutes: 60
+    # Uses a clean Ubuntu Linux virtual machine provided by GitHub
     runs-on: ubuntu-latest
+    
     steps:
+    # 1. Downloads a copy of your code repository onto the virtual machine
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+
+    # 2. Installs Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: lts/*
+        node-version: 18
+
+    # 3. Installs project dependencies (Playwright, packages, etc.)
     - name: Install dependencies
       run: npm ci
+
+    # 4. Installs the actual browsers (Chromium, Firefox) needed by Playwright
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
+    # 5. Executes your targeted suite (running your OR logic tags as an example)
     - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
+      run: npx playwright test GooglePage.spec.ts
+
+    # 6. Uploads the HTML test report so you can download and view it if a test fails
+    - name: Upload Test Report Artifact
+      uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report

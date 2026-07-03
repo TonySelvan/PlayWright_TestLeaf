@@ -22,6 +22,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: 'html', 
   reporter: [['html',{open:'always'}]],
@@ -32,8 +33,10 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace: 'on-first-retry',
+      // Automatically runs headless on GitHub Actions, but keeps headed mode locally if preferred
+    headless: process.env.CI === 'true',
     trace : 'on',
-    headless : false,
+    // headless : false,
     screenshot : 'on',
     video : 'on',
     launchOptions:{

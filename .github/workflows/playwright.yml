@@ -70,4 +70,3 @@ jobs:
           * **Repository:** ${{ github.repository }}
           * **Triggered By:** `${{ github.actor }}`
           * **Workflow Status:** **${{ job.status }}**
-          attachments: playwright-report/index.html

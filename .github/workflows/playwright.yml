@@ -43,3 +43,22 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+         # NEW STEP: Automatically triggers after tests complete
+    - name: Send Email Test Summary
+      uses: dawidd6/action-send-mail@v4
+      if: always() # Ensures the mail triggers on Success OR Failure
+      with:
+        # SMTP Server Configuration (Example using Gmail)
+        server_address: smtp.gmail.com
+        server_port: 465
+        secure: true
+        
+        # Authenticate using your secure repository secrets
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        
+        # Email Content Configuration
+        subject: "Playwright Automation Suite Run - ${{ job.status }}"
+        to: teammate1@company.com, manager@company.com
+        from: QA Automation Server <${{ secrets.MAIL_USERNAME }}>

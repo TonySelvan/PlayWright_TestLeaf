@@ -60,5 +60,5 @@ jobs:
         
         # Email Content Configuration
         subject: "Playwright Automation Suite Run - ${{ job.status }}"
-        to: teammate1@company.com, manager@company.com
+        to: ktselvan4029@gmail.com
         from: QA Automation Server <${{ secrets.MAIL_USERNAME }}>

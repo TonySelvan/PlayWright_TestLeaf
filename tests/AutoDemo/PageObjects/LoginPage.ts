@@ -16,12 +16,20 @@ export class LoginPage {
         this.usernameField = page.locator("input[name='username']");
         this.passwordField = page.locator("input[name='password']");
 
-        this.nameField = page.locator("//input[@name='form_fields[name]']");
-        this.emailField = page.locator("//input[@name='form_fields[email]'][1]");
-        this.phoneNumberField = page.locator("//input[@name='form_fields[message]']");
-        this.messageField = page.locator("//*[@id='form-field-field_28e2101']");
-        this.sendBtn = page.locator("//span[text()='Send']");
-        this.backHomeBtn = page.locator("//span[text()='Back To Home']");
+
+        this.nameField = page.getByLabel('Name'); // PW Loc
+        this.emailField = page.locator("input[name='form_fields[email]']").first();
+        this.phoneNumberField = page.locator("input[name*='message']"); //CSS
+        this.messageField = page.locator("textarea[id^='form-field-field_']");
+        this.sendBtn = page.getByRole('button', { name: 'Send' });
+        this.backHomeBtn = page.locator("//span[text()='Back To Home']"); //X-Path
+
+        // this.nameField = page.locator("//input[@name='form_fields[name]']");
+        // this.emailField = page.locator("//input[@name='form_fields[email]'][1]");
+        // this.phoneNumberField = page.locator("//input[@name='form_fields[message]']");
+        // this.messageField = page.locator("//*[@id='form-field-field_28e2101']");
+        // this.sendBtn = page.locator("//span[text()='Send']");
+        // this.backHomeBtn = page.locator("//span[text()='Back To Home']");
 
 
 

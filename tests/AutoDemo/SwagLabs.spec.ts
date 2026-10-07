@@ -1,5 +1,6 @@
-import test, { expect } from "@playwright/test";
+import test,  { expect } from "@playwright/test";
 import { LoginPage } from "./PageObjects/LoginPage";
+import { takeReportScreenshot } from './Utils/reportUtils';
 import { parse } from "csv-parse/sync";
 import fs from "fs";
 
@@ -20,7 +21,7 @@ test.describe("E2E Flow with SwagLabs Application", async () => {
     await expect(page).toHaveTitle("Enquiry Cart - Swag Labs");
   })
 
-  test("Form Submission Using POM", async ({ page }) => {
+  test("Form Submission Using POM", async ({ page }, testInfo) => {
 
     const loginPage = new LoginPage(page);
     await page.goto("https://swaglabs.in/");
@@ -28,8 +29,9 @@ test.describe("E2E Flow with SwagLabs Application", async () => {
     await loginPage.emailField.first().fill("Sowmika@yahoo.com");
     await loginPage.phoneNumberField.fill("12345");
     await loginPage.messageField.fill("This is for Automation Testing");
+    await takeReportScreenshot(page, testInfo, "Form-Filled");
     await loginPage.sendBtn.click();
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(3000);
     await expect(page).toHaveTitle("Thank you - Swag Labs");
     await loginPage.backHomeBtn.click();
     await expect(page).toHaveURL("https://swaglabs.in/");
@@ -44,7 +46,7 @@ test.describe("E2E Flow with SwagLabs Application", async () => {
       await loginPage.phoneNumberField.fill(data.phone);
       await loginPage.messageField.fill(data.message);
       await loginPage.sendBtn.click();
-      await page.waitForTimeout(2000);
+      await page.waitForTimeout(3000);
       await expect(page).toHaveTitle("Thank you - Swag Labs");
       await loginPage.backHomeBtn.click();
       await expect(page).toHaveURL("https://swaglabs.in/");

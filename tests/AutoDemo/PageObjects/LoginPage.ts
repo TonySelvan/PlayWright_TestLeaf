@@ -16,7 +16,6 @@ export class LoginPage {
         this.usernameField = page.locator("input[name='username']");
         this.passwordField = page.locator("input[name='password']");
 
-
         this.nameField = page.getByLabel('Name'); // PW Loc
         this.emailField = page.locator("input[name='form_fields[email]']").first();
         this.phoneNumberField = page.locator("input[name*='message']"); //CSS
